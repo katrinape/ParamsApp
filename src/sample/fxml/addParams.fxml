@@ -12,15 +12,15 @@
             fx:controller="sample.controller.AddParamsController">
     <VBox layoutX="50.0" layoutY="52.0" prefWidth="279.0" spacing="10.0">
         <HBox alignment="BASELINE_CENTER" spacing="10.0">
-            <Label alignment="BASELINE_RIGHT" prefWidth="150.0" text="Data" />
+            <Label alignment="BASELINE_RIGHT" prefWidth="150.0" text="%date" />
             <DatePicker fx:id="datePicker" prefWidth="150.0" />
         </HBox>
         <HBox alignment="BASELINE_CENTER" spacing="10.0">
-            <Label alignment="BASELINE_RIGHT" prefWidth="150.0" text="Waga ciała" />
+            <Label alignment="BASELINE_RIGHT" prefWidth="150.0" text="%weight" />
             <TextField fx:id="weightField" prefWidth="150.0" />
         </HBox>
         <HBox alignment="BASELINE_CENTER" spacing="10.0">
-            <Label alignment="BASELINE_RIGHT" prefWidth="150.0" text="Temperatura" />
+            <Label alignment="BASELINE_RIGHT" prefWidth="150.0" text="%temperature" />
             <TextField fx:id="temperatureField" prefWidth="150.0" />
         </HBox>
     </VBox>

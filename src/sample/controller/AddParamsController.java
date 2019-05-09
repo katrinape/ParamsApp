@@ -15,7 +15,6 @@ public class AddParamsController {
     @FXML
     private TextField temperatureField;
 
-
     Parameter processResults() {
         LocalDate date = datePicker.getValue();
         StringBuilder stringBuilder = new StringBuilder();

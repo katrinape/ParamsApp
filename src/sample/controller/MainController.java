@@ -15,9 +15,11 @@ import sample.model.Datasource;
 import sample.model.Parameter;
 import java.io.IOException;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class MainController {
 
+    private static final String CHART_FXML = "/sample/fxml/chart.fxml";
     @FXML
     private Button showParamsButton;
     @FXML
@@ -39,12 +41,16 @@ public class MainController {
 
     @FXML
     public void addParametersOpen() {
-        Dialog<ButtonType> dialog = new Dialog<>();
-        dialog.initOwner(mainBorderPane.getScene().getWindow());
-        dialog.setTitle("Add Parameters");
-        dialog.setHeaderText("Dodaj swoje pomiary");
+
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("/sample/fxml/addParams.fxml"));
+        ResourceBundle bundle = ResourceBundle.getBundle("sample.bundles.messages");
+        fxmlLoader.setResources(bundle);
+
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.initOwner(mainBorderPane.getScene().getWindow());
+        dialog.setTitle(bundle.getString("add.params"));
+        dialog.setHeaderText(bundle.getString("add.params"));
 
         try {
             dialog.getDialogPane().setContent(fxmlLoader.load());
@@ -71,7 +77,7 @@ public class MainController {
     @FXML
     public void showChart() {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/sample/fxml/chart.fxml"));
+        loader.setLocation(getClass().getResource(CHART_FXML));
         try {
             loader.load();
         } catch (IOException e) {

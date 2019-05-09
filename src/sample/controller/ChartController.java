@@ -7,6 +7,7 @@ import sample.model.Datasource;
 import sample.model.Parameter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class ChartController {
 
@@ -15,21 +16,22 @@ public class ChartController {
 
     @FXML
     void show() {
+        ResourceBundle bundle = ResourceBundle.getBundle("sample.bundles.messages");
         List<Parameter> parameters = new ArrayList<>(Datasource.getInstance().queryParameters());
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         for (Parameter parameter : parameters) {
             series.getData().add(new XYChart.Data<>(parameter.getDate(), parameter.getWeight()));
         }
-        series.setName("Waga");
+        series.setName(bundle.getString("weight"));
         lineChart.getData().add(series);
 
         XYChart.Series<String, Number> series1 = new XYChart.Series<>();
         for (Parameter parameter : parameters) {
             series1.getData().add(new XYChart.Data<>(parameter.getDate(), parameter.getTemperature()));
         }
-        series1.setName("Temperatura");
+        series1.setName(bundle.getString("temperature"));
 
-        lineChart.setTitle("Wykres wagi i temperatury");
+        lineChart.setTitle(bundle.getString("chart.title"));
         lineChart.getData().add(series1);
     }
 }

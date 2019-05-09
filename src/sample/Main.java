@@ -8,17 +8,22 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.controller.MainController;
 import sample.model.Datasource;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Locale.setDefault(new Locale("en"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/fxml/main.fxml"));
+        ResourceBundle bundle = ResourceBundle.getBundle("sample.bundles.messages");
+        loader.setResources(bundle);
         Parent root = loader.load();
         MainController controller = loader.getController();
         controller.listParameters();
+        primaryStage.setTitle(bundle.getString("app.title"));
 
-        primaryStage.setTitle("My Parameters");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
     }
